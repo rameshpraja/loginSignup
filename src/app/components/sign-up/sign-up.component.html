@@ -1,0 +1,170 @@
+<div class="login_wrapper">
+    	<div class="row cf">
+          
+        	<div class="col-12">
+            	<div class="login_main01">
+                
+                    <h2>Registration Form</h2>
+                    <div *ngIf="error" class="alert alert-danger"> {{falseMsg}} </div>
+                    <form  [formGroup]="form" id="myForm" role="form"  (ngSubmit)="onSubmit(form.value)" *ngIf="!signin">
+                    <div class="login_form01">
+                        <input 
+                        formControlName="firstname"
+                       type="text" 
+                       id="firstname" placeholder="Enter First Name">
+                    </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="firstname.touched && firstname.invalid"  role="alert">
+                        <div style="color:rgb(179, 14, 14)" *ngIf="firstname.errors.required"> <strong> First Is Required</strong> </div>
+                        <div style="color:rgb(179, 14, 14)" *ngIf="firstname.errors.maxlength"><strong> First Name Should be Mininum of {{firstname.errors.maxlength.requiredLength}} Characters</strong> </div>
+                        
+                    </div>
+                    <div class="login_form01">
+                        <input 
+                        formControlName="surname"
+                       type="text" 
+                       id="surname" placeholder="Enter Sur Name">
+                    </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="surname.touched && surname.invalid"  role="alert">
+                        <div style="color:rgb(179, 14, 14)" *ngIf="surname.errors.required"> <strong> Sur Name Is Required</strong> </div>
+                        <div style="color:rgb(179, 14, 14)" *ngIf="surname.errors.maxlength"><strong> Sur Name Should be Mininum of {{surname.errors.maxlength.requiredLength}} Characters</strong> </div>
+                        
+                    </div>                   <div class="login_form01">
+                        <input 
+                        formControlName="lastname"
+                       type="text" 
+                       id="lastname" placeholder="Enter Last Name">
+                    </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="lastname.touched && lastname.invalid"  role="alert">
+                        <div style="color:rgb(179, 14, 14)" *ngIf="lastname.errors.required"> <strong> Last Name Is Required</strong> </div>
+                        <div style="color:rgb(179, 14, 14)" *ngIf="lastname.errors.maxlength"><strong> Last Name Should be Mininum of {{lastname.errors.maxlength.requiredLength}} Characters</strong> </div>
+                        
+                    </div>
+                    <div class="login_form01">
+                        <input 
+                        formControlName="email"
+                        type="email" 
+                        id="email" placeholder="Enter Valid Email" >
+                    </div>
+                     <div style="color:rgb(179, 14, 14)" *ngIf="email.touched && email.invalid"  role="alert">
+      
+                     <div style="color:rgb(179, 14, 14)" *ngIf="email.errors.required"><strong>Email Is Required</strong> </div>
+                     <div style="color:rgb(179, 14, 14)" *ngIf="email.errors.email"><strong>Enter Valid Email Address</strong> </div>
+                    </div>
+                    
+                    <div class="login_form01">
+                        <input
+                        formControlName="password"
+                        type="password" 
+                        id="password" placeholder="Your Account Password">
+                       
+                    </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="password.touched && password.invalid"  role="alert">
+              
+                        <div style="color:rgb(179, 14, 14)" *ngIf="password.errors.required"><strong>Password Is Required</strong> </div>
+
+                      </div>
+                           
+                    <div class="login_form01">
+                        <input
+                        formControlName="confirmPassword" 
+                        type="password"
+                         placeholder="Confirm Password">
+                       
+                    </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="confirmPassword.touched && confirmPassword.invalid"  role="alert">
+                        <div style="color:rgb(179, 14, 14)" *ngIf="confirmPassword.errors.required"><strong>Confirm Pssword Once</strong> </div>
+                       </div>
+                     <div style="color:rgb(179, 14, 14)" *ngIf="confirmPassword.valid && password.value!=confirmPassword.value">Password Not Match</div>
+                    <div class="login_form01">
+                        <input 
+                        formControlName="contact"
+                        type="mobile"
+                        id="contact" placeholder="Enter Contact Number">
+                      
+                    </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="contact.touched && contact.invalid"  role="alert">
+                
+                        <div style="color:rgb(179, 14, 14)" *ngIf="contact.errors.minlength"><strong>Enter Valid Contact </strong> </div>
+                        <div style="color:rgb(179, 14, 14)" *ngIf="contact.errors.maxlength"><strong>Enter Valid Contact </strong> </div>
+                        <div style="color:rgb(179, 14, 14)" *ngIf="contact.errors.validContact"><strong>Contact Cannot Can Only Contain Numbers </strong> </div>
+                       <div style="color:rgb(179, 14, 14)" *ngIf="contact.errors.required"><strong>Contact Is Required</strong> </div>
+                
+                      </div>
+                      <div class="login_form01">
+                        <textarea 
+                        formControlName="address"
+                        type="text"
+                        id="address" placeholder="Enter Address"></textarea>
+                    </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="address.touched && address.invalid"  role="alert">
+              
+                        <div style="color:rgb(179, 14, 14)" *ngIf="address.errors.required"><strong>Adresss Is Required</strong> </div>
+
+                      </div>
+                      <div class="login_form01">
+                        <input
+                        placeholder="Enter Your Date Of Birth"
+                        class="form-control"
+                        [minDate]="minDate"
+                        [maxDate]="maxDate"
+                        #dp="bsDatepicker"
+                        bsDatepicker
+                        formControlName="dob"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+                   </div>
+                    <div style="color:rgb(179, 14, 14)" *ngIf="dob.touched && dob.invalid"  role="alert">
+              
+                        <div style="color:rgb(179, 14, 14)" *ngIf="dob.errors.required"><strong>Date of Birth Is Required</strong> </div>
+
+                      </div>
+                      <div class="row">
+                          <div class="col-md-7">
+                            <div class="form-group">
+                                <input type="file" id="photo" #fileupload  (change)="fileChange(fileupload.files)" class="file">
+                                <div class="input-group col-xs-12">
+                                    <span  class="browse input-group-addon" style="background-color:#222;color:white"><i class="fa fa-image"></i>&nbsp; Upload</span>
+                                    <input  type="text" [value]="imageUrls" [formControlName]="'imageUrl'" class="form-control input-lg" disabled placeholder="Upload Your Image....">
+                                   
+                                   
+                                </div>
+                                <div style="color:rgb(88, 179, 14)" *ngIf="imageUrls"><strong>Image Uploaded!!</strong> </div>
+                                </div>
+                          </div>
+                          <div *ngIf="imageUrls " class="col-md-5">
+                          <img style="height:150px;width:200px;" src={{imageUrls}} />
+                          
+                          </div>
+                          <div class="col-md-1" *ngIf="loader">
+                            <span class="ouro">
+                                    <span class="left"><span class="anim"></span></span>
+                                    <span class="right"><span class="anim"></span></span>
+                                    </span>
+                       </div>
+                      </div>
+           
+                    <div class="login_form01">
+                        <input  type="submit" value="Register">
+                    </div>
+                    <div class="login_form01" *ngIf="!form.valid">
+                     <strong style="color:rgb(179, 14, 14)">**All Fields Are Required**</strong>
+                    </div>
+                    </form>
+                    <div class="alert alert-success" *ngIf="signin">
+                        <strong>Congratulations!</strong>
+                        <br>
+                        You have Been Registered.
+                    </div>
+                    <div class="alert alert-danger" *ngIf="error">
+                        <strong>Error!</strong>
+                        <br>
+                       SomeThing Went Wrong.Please Try Again!
+                    </div>
+                    <div class="forgotpass_link">Already have an account? <a routerLink="/login">Login</a></div>
+                    
+                    
+                    
+                </div>
+            </div>
+		</div>
+ 
+</div>

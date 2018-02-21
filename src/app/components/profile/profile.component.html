@@ -1,0 +1,66 @@
+<div *ngIf="loading" class="loading">Loading&#8230;</div>
+    <div *ngIf="!loading" class="mom_story_wrapper animated fadeIn">
+	
+      <div class="container">
+          <div class="momstory_heading">
+            <span><i class="fa fa-user"></i></span>
+              <h1>Profile</h1>
+              <h2>Welcome {{user?.firstname}}</h2>
+          </div>
+      </div>
+      
+    <div class="container">
+        <div class="row cf">
+            <div class="col-12">
+                <div class="userprofile_main cf">
+                <div class="userprofile_left">
+                  
+                  <div class="user_profile_icon" *ngIf="user?.imageUrl">
+                    <img src="{{user?.imageUrl}}" class="rounded-circle" alt="Default Image" width="204" height="206"> 
+                      <p> {{user?.firstname + user?.surname}}<br>
+                        <b *ngIf="user.admin" style="color:#f50057">Admin</b></p>
+                  </div>
+                  </div>
+                  <div class="userprofile_right">
+                    <div class="user_form_main01 cf">
+                        <div class="user_form_main01_left cf">
+                          <label>Full Name</label>
+                          <span> {{user?.firstname +user?.surname + user?.lastname}}</span>
+                          </div>
+                          <div class="user_form_main01_right cf">
+                          <label>Email</label>
+                        <span> {{user?.email}}</span>
+                          </div>
+                      </div>
+                      
+                      <div class="user_form_main01 cf">
+                        <div class="user_form_main01_left cf">
+                          <label>Dob</label>
+                          <span>{{user?.dob | date}}</span>
+                          </div>
+                          <div class="user_form_main01_right cf">
+                          <label>Address</label>
+                        <span>{{user?.address}}</span>
+                          </div>
+                      </div>
+                      
+                      <div class="user_form_main01 cf">
+                        <div class="user_form_main01_left cf">
+                          <label>Contact</label>
+                          <span>{{user?.contact}}</span>
+                          </div>
+                         
+                      </div>
+                      
+                      
+                      
+                  </div>
+                  </div>
+                  
+                  
+              </div>
+      </div>
+      </div>
+  
+  </div>
+  
