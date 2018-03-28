@@ -1,4 +1,4 @@
-#Login Signup, After Login view UserProfile, Update user profile built with Angular4, MongoDB and ExpressJS
+# Login Signup, After Login view UserProfile, Update user profile built with Angular4, MongoDB and ExpressJS
 
 1. Create Sign in, signup,home page and User profile page
 2. make an authentication service for security layer from where user should not open home page without login
@@ -17,8 +17,8 @@
 7. The home page should display login user detail and profile picture. All this detail should fetch through API call.
 	
 
-##Steps for Running the Application
- Note : Before run the application, you must have to install node and npm in your system
+## Steps for Running the Application
+ Note: Before run the application, you must have to install node and npm in your system
 
 - This application frontend built in Angular4 and Backend we have used ExpressJS and MongoDB(NoSQL) database
 - download the project in your local system
