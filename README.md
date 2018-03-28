@@ -1,27 +1,38 @@
-# Login
+#Login Signup, After Login view UserProfile, Update user profile built with Angular4, MongoDB and ExpressJS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
+1. Create Sign in, signup,home page and User profile page
+2. make an authentication service for security layer from where user should not open home page without login
+3. save user token in local storage	
+4. Implement one service like interceptor from where I can pass authentication token to all APIs
+5. Sign up the user with following details.
+ - first name, last name, surname, mobile, email, profile picture, Address, date of birth
+ - all above field is required
+ - first name, last name, and surname should be maximum 30 characters
+ - email validation
+ - date of birth should not greater than the current date
 
-## Development server
+6. Homepage should have header and footer type design
+ - header page and footer page should have separate component. so I can use same on another page also.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+7. The home page should display login user detail and profile picture. All this detail should fetch through API call.
+	
 
-## Code scaffolding
+##Steps for Running the Application
+ Note : Before run the application, you must have to install node and npm in your system
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- This application frontend built in Angular4 and Backend we have used ExpressJS and MongoDB(NoSQL) database
+- download the project in your local system
+	
+- In source code there are two folder 
+  1. src : its contain the Angular4 setups for running frontend application
+  2. server : it contain the ExpressJS setups for running the backend nodeJS services 
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- got to src folder and install npm : 
+  - cd src
+  - npm install
+  - npm start
+- open new terminal for running the Node.JS services
+- goto the server folder and install npm
+  - cd server
+  - npm install
+  - npm start
