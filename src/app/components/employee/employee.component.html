@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Country</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.country }}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">New</button>
+    </div>
+  </div>
+  <br>
+
+  <!-- Start create new Employee -->
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()"  #f="ngForm" name="form">
+      <div class="form-group row">
+        <label for="firstname-input" class="col-2 col-form-label">First Name</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="empModel.firstName" name="firstName"  #fname="ngModel">
+        </div>
+        <div *ngIf="f.submitted && !fname.valid" class="help-block">fname  is required</div>
+      </div>
+      <div class="form-group row">
+        <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="empModel.lastName" name="lastName">
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">Email</label>
+        <div class="col-10">
+          <input class="form-control" type="email" [(ngModel)]="empModel.email" name="email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-password-input" class="col-2 col-form-label">Password</label>
+        <div class="col-10">
+          <input class="form-control" type="password" [(ngModel)]="empModel.password" name="password">
+        </div>
+      </div> 
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+</div>

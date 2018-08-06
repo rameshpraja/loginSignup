@@ -9,6 +9,7 @@ const appRoutes: Routes = [
     { path: `login`,loadChildren: `./../components/login/login.module#LoginModule`,canActivate: [ProtectGuard]},
     { path: `sign-up`,loadChildren: `./../components/sign-up/sign-up.module#SignUpModule`,canActivate: [ProtectGuard]},
     { path: `not-found`,loadChildren: `./../components/not-found/not-found.module#NotFoundModule` },
+    { path: `emplist`,loadChildren: `./../components/employee/employee.module#EmployeeModule` },
     { path: `**`, redirectTo: `not-found` }
     
   ];
