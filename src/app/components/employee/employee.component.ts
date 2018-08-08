@@ -7,8 +7,8 @@ class Employee {
     public lastName: string = '',
     //public dob: any = null,
     public email: string = '',
-    public password: string = '',
-    public country: string = 'Select country'
+    public mobileNumber: any = '',
+    public country: string = ''
   ) {}
 }
 
@@ -18,24 +18,19 @@ class Employee {
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  // It maintains list of Registrations
   employees: Employee[] = [];
-  // It maintains registration Model
   empModel: Employee;
 
-  // It maintains registration form display status. By default it will be false.
   showNew: Boolean = false;
-  // It will be either 'Save' or 'Update' based on operation.
   submitType: string = 'Save';
-  // It maintains table row index based on selection.
   selectedRow: number;
-  // It maintains Array of countries.
   countries: string[] = ['US', 'UK', 'India', 'UAE'];
+  countrySelected:any = '';
   constructor() {
     // Add default registration data.
-    this.employees.push(new Employee('Johan', 'Peter', 'johan@gmail.com', 'johan123', 'UK'));
-    this.employees.push(new Employee('Mohamed', 'Tariq', 'tariq@gmail.com', 'tariq123', 'UAE'));
-    this.employees.push(new Employee('Nirmal', 'Kumar', 'nirmal@gmail.com', 'nirmal123', 'India'));
+    this.employees.push(new Employee('Johan', 'Peter', 'johan@gmail.com', 12345, 'UK'));
+    this.employees.push(new Employee('Mohamed', 'Tariq', 'tariq@gmail.com', 88794,'UAE'));
+    this.employees.push(new Employee('Nirmal', 'Kumar', 'nirmal@gmail.com', 7914,'India'));
   }
 
   ngOnInit() {}
@@ -53,18 +48,19 @@ export class EmployeeComponent implements OnInit {
       this.employees.push(this.empModel);
     } else {
       // Update the existing properties values based on model.
-      this.employees[this.selectedRow].firstName = this.empModel.firstName;
-      this.employees[this.selectedRow].lastName = this.empModel.lastName;
-      this.employees[this.selectedRow].email = this.empModel.email;
-      this.employees[this.selectedRow].password = this.empModel.password;
-      this.employees[this.selectedRow].country = this.empModel.country;
+      this.employees[this.selectedRow] = this.empModel;
+      // this.employees[this.selectedRow].firstName = this.empModel.firstName;
+      // this.employees[this.selectedRow].lastName = this.empModel.lastName;
+      // this.employees[this.selectedRow].email = this.empModel.email;
+      // this.employees[this.selectedRow].password = this.empModel.password;
+      // this.employees[this.selectedRow].country = this.empModel.country;
     }
     // Hide registration entry section.
     this.showNew = false;
   }
 
   // This method associate to Edit Button.
-  onEdit(index: number) {
+  onEdit(index) {
     this.selectedRow = index;
     this.empModel = new Employee();
     this.empModel = Object.assign({}, this.employees[this.selectedRow]);
@@ -88,6 +84,7 @@ export class EmployeeComponent implements OnInit {
   onChangeCountry(country: string) {
     // Assign corresponding selected country to model.
     this.empModel.country = country;
+    console.log(this.empModel.country);
   }
 
 }

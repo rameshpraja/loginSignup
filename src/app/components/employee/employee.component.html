@@ -36,34 +36,57 @@
 
   <!-- Start create new Employee -->
   <div class="regentry" *ngIf="showNew">
-    <form (ngSubmit)="onSave()"  #f="ngForm" name="form">
-      <div class="form-group row">
-        <label for="firstname-input" class="col-2 col-form-label">First Name</label>
-        <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="empModel.firstName" name="firstName"  #fname="ngModel">
+    <form (ngSubmit)="onSave()"  #userForm="ngForm" name="form">
+        <div class="form-group">
+            <label for="name"> First Name</label>
+            <input type="text" class="form-control" id="fname" required
+                   [(ngModel)]="empModel.firstName" name="fname" #fname="ngModel">
+            <div [hidden]="fname.valid || fname.pristine" class="alert alert-danger">
+              First Name is required
+            </div>
         </div>
-        <div *ngIf="f.submitted && !fname.valid" class="help-block">fname  is required</div>
-      </div>
-      <div class="form-group row">
-        <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
-        <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="empModel.lastName" name="lastName">
+
+        <div class="form-group">
+            <label for="name"> Last Name</label>
+            <input type="text" class="form-control" id="lname" required
+                   [(ngModel)]="empModel.lastName" name="lname" #lname="ngModel">
+            <div [hidden]="lname.valid || lname.pristine" class="alert alert-danger">
+              Last Name is required
+            </div>
         </div>
-      </div>
-      
-      <div class="form-group row">
-        <label for="example-email-input" class="col-2 col-form-label">Email</label>
-        <div class="col-10">
-          <input class="form-control" type="email" [(ngModel)]="empModel.email" name="email">
+
+        <div class="form-group">
+            <label for="name"> Email</label>
+            <input type="email" class="form-control" emailvalidator id="email" required
+                   [(ngModel)]="empModel.email" name="email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            <div [hidden]="email.valid || email.pristine || email.untouched" class="alert alert-danger">
+                <p *ngIf="email.errors && email.errors.required">Email is required</p>  
+                <p *ngIf="email.errors && email.errors.pattern">Please provide a valid email address</p> 
+            </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="example-password-input" class="col-2 col-form-label">Password</label>
-        <div class="col-10">
-          <input class="form-control" type="password" [(ngModel)]="empModel.password" name="password">
+
+        <div class="form-group">
+            <label for="name">Mobile Number</label>
+            <input type="text" class="form-control" id="mobilenumber" required
+                   [(ngModel)]="empModel.mobileNumber" name="mobilenumber" #mobilenumber="ngModel">
+            <div [hidden]="mobilenumber.valid || mobilenumber.pristine" class="alert alert-danger">
+                Mobile Number is required
+            </div>
         </div>
-      </div> 
-      <button type="submit" class="btn btn-success">{{submitType}}</button>
+
+        <div class="form-group">
+            <label for="name">Country</label>
+            <select class='form-control' required [(ngModel)]='empModel.country' (ngModelChange)='onChangeCountry($event)' [ngModelOptions]="{standalone: true}"
+            id="country" #country="ngModel" >
+                <option class='option' value=""> ---Please select country--- </option>
+                <option class='option' *ngFor='let country of countries' [value]="country">{{country}}</option>
+            </select>
+            <div [hidden]="country.valid || country.pristine" class="alert alert-danger">
+                country is required
+            </div>
+        </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">{{submitType}}</button>
       <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
     </form>
   </div>
